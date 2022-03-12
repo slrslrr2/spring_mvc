@@ -24,6 +24,7 @@ import java.io.IOException;
         - HTTP API에서 주로 사용, JSON, XML TEXT
             JSON 결과를 파싱해서 자바에서 사용할 수 있는 객체로 변하려면
             Jackson, Gson과 같은 JSON변환 객체를 사용해여한다
+
                 - Jackson 예시
                      // jackson객체
                      private ObjectMapper objectMapper = new ObjectMapper();
@@ -33,6 +34,7 @@ import java.io.IOException;
                          ServletInputStream inputStream = request.getInputStream();
 
                          // {'username': "gbitkim", 'age': 22}
+                         // JSON으로 전송하였다고 하더라도 Byte를 String으로 변환해준것이기에 String 한줄로 표시된다.
                          String messageBody = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
                          Hello hello = objectMapper.readValue(messageBody, Hello.class);
                      }
@@ -42,6 +44,22 @@ import java.io.IOException;
      Enumeration<String> parameterNames = request.getParameterNames(); //파라미터 이름들 모두 조회
      Map<String, String[]> parameterMap = request.getParameterMap(); //파라미터를 Map 으로 조회
      String[] usernames = request.getParameterValues("username"); //복수 파라미터 조회
+ */
+
+/**
+ KeyWord
+
+ @WebServlet
+ @ServletComponentScan
+ @SpringBootApplication
+
+ HttpServlet, HttpServletRequest, HttpServletResponse
+
+ GET - 메시지바디 X
+ POST - 메시지바디에 데이터 담음 Content-Type 있음
+ JSON - Jackson or Gson 객체 사용해서 자바에서 사용 가능한 코드로 변환해줘야함
+
+ Content-Type : text/plain, application/x-www-form-urlencoded, application/json
  */
 @WebServlet(name="requestParamServlet", urlPatterns = "/RequestParamServlet")
 public class RequestParamServlet extends HttpServlet {
