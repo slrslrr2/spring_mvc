@@ -1,7 +1,7 @@
 package hello.servlet.basic.request;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hello.servlet.basic.Hello;
+import hello.servlet.basic.HelloData;
 import org.springframework.util.StreamUtils;
 
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class RequestBodyJsonServlet extends HttpServlet {
         System.out.println("messageBody = " + messageBody); // {'username': "gbitkim", 'age': 22}
 
         // 객체로 변환하여 가져올 수 있다.
-        Hello hello = objectMapper.readValue(messageBody, Hello.class);
+        HelloData hello = objectMapper.readValue(messageBody, HelloData.class);
         System.out.println("hello.getUsername() = " + hello.getUsername());
     }
 }
