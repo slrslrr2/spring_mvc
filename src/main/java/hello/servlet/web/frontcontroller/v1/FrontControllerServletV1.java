@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+Front Controller에서 url과 매핑되는 Controller를 찾아 반환해준다.
+ */
 @WebServlet(name="frontControllerServletV1", urlPatterns = "/front-controller/v1/*")
 public class FrontControllerServletV1 extends HttpServlet {
     private Map<String, ControllerV1> controllerV1Map = new HashMap<>();
