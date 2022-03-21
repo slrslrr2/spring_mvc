@@ -37,6 +37,11 @@ import javax.servlet.http.HttpServletResponse;
  * org.springframework.web.servlet.mvc.Controller를 상속받은 경우
  * HandlerMapping : BeanNameUrlHandlerMapping
  * HandlerAdapter : SimpleControllerHandlerAdapter
+ * InternalResourceViewResolver -> InternalResourceView 안에 forward있다.
+ *   이는 ViewName을 넣어준다.
+ * 		RequestDispatcher rd = getRequestDispatcher(request, dispatcherPath);
+ * 				rd.forward(request, response);
+ *
  */
 
 @Component("/sprimgmvc/old-controller")
@@ -45,6 +50,6 @@ public class OldController implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("OldController.handleRequest");
-        return null;
+        return new ModelAndView("new-form");
     }
 }
